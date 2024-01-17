@@ -46,6 +46,13 @@ This is a simple OAuth example using Java Web Token
 
     The client will interact with the authentication server and service.
 
+
+## Executing the tests suites
+
+    ```bash
+    npm test
+    ```
+
 ## Note
 
-- Be sure that authentication server and service are both running before starting the client.
+- Be sure that authentication server and service are both running before starting the client or running the tests.
