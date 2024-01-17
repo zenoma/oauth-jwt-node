@@ -49,6 +49,8 @@ This is a simple OAuth example using Java Web Token
 
 ## Executing the tests suites
 
+ 1. Run the tests:
+
     ```bash
     npm test
     ```
