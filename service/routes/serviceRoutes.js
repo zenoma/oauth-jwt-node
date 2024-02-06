@@ -1,5 +1,5 @@
 import express from 'express';
-import {verifyJWT} from '../../middleware/jwtMiddleware.js'
+import {verifyJWT} from '../../utils/jwtUtils.js';
 import SimpleLogger from '../../utils/simpleLogger.js';
 
 const logger = new SimpleLogger();

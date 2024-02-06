@@ -1,6 +1,6 @@
 import express from 'express';
-import { validateUser } from '../../middleware/userValidationMiddleware.js';
-import { signJWT } from '../../middleware/jwtMiddleware.js';
+import { validateUser } from '../../utils/userValidation.js';
+import { signJWT } from '../../utils/jwtUtils.js';
 import SimpleLogger from '../../utils/simpleLogger.js';
 
 const logger = new SimpleLogger();
