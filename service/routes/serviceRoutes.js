@@ -7,7 +7,14 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
 
-    const token = req.headers.authorization;
+  const authorizationHeader = req.headers.authorization;
+
+  if (!authorizationHeader || !authorizationHeader.startsWith('Bearer ')) {
+      logger.log('Token not provided');
+      return res.status(401).json({ message: 'Token not provided' });
+  }
+
+  const token = authorizationHeader.split(' ')[1];
 
     if (token) {
       verifyJWT(token, (err, decoded) => {

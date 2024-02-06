@@ -40,7 +40,7 @@ const getDataFromService = async (token) => {
     logger.log(`Fetch data from Service with the obtained token`);
     const response = await fetch(SERVICE_URL, {
       method: 'GET',
-      headers: { Authorization: token },
+      headers: { Authorization: `Bearer ${token}`},
     });
 
     if (!response.ok) {
