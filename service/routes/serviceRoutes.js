@@ -1,5 +1,5 @@
 const express = require('express');
-const jwtMiddleware = require('../middleware/jwtMiddleware');
+const jwtMiddleware = require('../../middleware/jwtMiddleware');
 
 const router = express.Router();
 

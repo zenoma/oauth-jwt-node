@@ -1,14 +1,20 @@
 {
   "dependencies": {
-    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.2",
-    "node-fetch": "^3.3.2"
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "jest": "^29.7.0"
   },
   "scripts": {
+    "start:auth-server": "node ./auth-server/auth-server.js",
+    "start:service": "node ./service/service.js",  
+    "start:auth-server:watch": "node --watch ./auth-server/auth-server.js",
+    "start:service:watch": "node --watch ./service/service.js",
+    "client": "node ./client/client.js",
     "test": "jest"
+  },
+  "engines": {
+    "node": ">=18.13.0"
   }
 }

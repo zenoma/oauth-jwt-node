@@ -5,6 +5,7 @@ This is a simple OAuth example using Java Web Token
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) installed on your machine.
+  - Version >= 18.13.0
 
 ## Getting Started
 

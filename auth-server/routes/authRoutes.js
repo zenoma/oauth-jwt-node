@@ -1,6 +1,6 @@
 const express = require('express');
-const jwtMiddleware = require('../middleware/jwtMiddleware');
-const userValidationMiddleware = require('../middleware/userValidationMiddleware');
+const jwtMiddleware = require('../../middleware/jwtMiddleware');
+const userValidationMiddleware = require('../../middleware/userValidationMiddleware');
 
 const router = express.Router();
 
