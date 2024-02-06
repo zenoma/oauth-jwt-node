@@ -26,7 +26,7 @@ test('givenValidToken_whenGet_thenObtainedData', async () => {
 
     const serviceResponse = await fetch(serviceURL, {
         method: 'GET',
-        headers: { Authorization: token },
+        headers: { Authorization: `Bearer ${token}` },
       });
 
     const serviceResponseBody = await serviceResponse.json();
@@ -53,7 +53,7 @@ test('givenValidToken_whenGet_thenObtainedData', async () => {
     expect(serviceResponse.status).toBe(401);
 
     const expectedJson = {
-        "message": "Invalid Token",
+        "message": "Token not provided",
       }
 
     expect(serviceResponseBody).toEqual(expectedJson);
