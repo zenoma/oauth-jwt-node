@@ -2,9 +2,9 @@ import express from 'express';
 import dotenv from 'dotenv'
 
 import serviceRoutes from './routes/serviceRoutes.js';
-import DummyLogger from '../utils/simpleLogger.js';
+import SimpleLogger from '../utils/simpleLogger.js';
 
-const logger = new DummyLogger();
+const logger = new SimpleLogger();
 dotenv.config();
 
 

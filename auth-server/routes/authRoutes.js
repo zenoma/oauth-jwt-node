@@ -1,9 +1,9 @@
 import express from 'express';
 import { validateUser } from '../../middleware/userValidationMiddleware.js';
 import { signJWT } from '../../middleware/jwtMiddleware.js';
-import DummyLogger from '../../utils/simpleLogger.js';
+import SimpleLogger from '../../utils/simpleLogger.js';
 
-const logger = new DummyLogger();
+const logger = new SimpleLogger();
 const router = express.Router();
 
 router.post('/login', (req, res) => {

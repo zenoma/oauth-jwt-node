@@ -1,8 +1,8 @@
 import express from 'express';
 import {verifyJWT} from '../../middleware/jwtMiddleware.js'
-import DummyLogger from '../../utils/simpleLogger.js';
+import SimpleLogger from '../../utils/simpleLogger.js';
 
-const logger = new DummyLogger();
+const logger = new SimpleLogger();
 const router = express.Router();
 
 router.get('/', (req, res) => {

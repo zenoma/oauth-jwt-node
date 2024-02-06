@@ -1,9 +1,9 @@
 import express from 'express';
 import authRoutes from './routes/authRoutes.js';
 import dotenv from 'dotenv'
-import DummyLogger from '../utils/simpleLogger.js';
+import SimpleLogger from '../utils/simpleLogger.js';
 
-const logger = new DummyLogger();
+const logger = new SimpleLogger();
 
 dotenv.config();
 

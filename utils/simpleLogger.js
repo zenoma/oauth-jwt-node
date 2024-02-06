@@ -1,6 +1,6 @@
 class SimpleLogger {
     log(message) {
-      const logEntry = `${new Date().toUTCString()} - ${message}`;
+      const logEntry = `[INFO] ${new Date().toUTCString()} - ${message}`;
       console.log(logEntry);
     }
   }

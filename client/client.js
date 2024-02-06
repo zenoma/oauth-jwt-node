@@ -1,7 +1,8 @@
 import dotenv from 'dotenv'
-import DummyLogger from '../utils/simpleLogger.js';
+import SimpleLogger from '../utils/simpleLogger.js';
+import ClientCustomError from './errors/ClientCustomError.js';
 
-const logger = new DummyLogger();
+const logger = new SimpleLogger();
 dotenv.config();
 
 const AUTH_SERVER_URL  = `${process.env.BASE_URL}:${process.env.AUTH_SERVER_PORT}`;
@@ -16,7 +17,7 @@ const loginCredentials = {
 const getToken = async () => {
   try {
     logger.log(`Fetch token from Auth Server using credentials`);
-    const response = await fetch(`${AUTH_SERVER_URL }/login`, {
+    const response = await fetch(`${AUTH_SERVER_URL}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(loginCredentials),
@@ -24,14 +25,13 @@ const getToken = async () => {
 
 
     if (!response.ok) {
-      throw new Error( new Date().toUTCString() + ` [Failed to fetch token - ${response.statusText}]`);
+      throw new ClientCustomError('Failed to fetch token', response.statusText);
     }
 
     const data = await response.json();
     return data.token;
   } catch (error) {
-    console.error(new Date().toUTCString() + ' [Unable to fetch token -', error.message + ']');
-    throw error;
+    console.error(error.toString());
   }
 };
 
@@ -44,13 +44,13 @@ const getDataFromService = async (token) => {
     });
 
     if (!response.ok) {
-      throw new Error(new Date().toUTCString() + ` [Failed to fetch data - ${response.statusText}]`);
+      throw new ClientCustomError('Failed to fetch data', response.statusText);
     }
 
     const data = await response.json();
     console.log(data)
   } catch (error) {
-    console.error(error.message);
+    console.error(error.toString());
   }
 };
 
