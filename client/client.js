@@ -2,18 +2,19 @@ import dotenv from 'dotenv'
 
 dotenv.config();
 
-const authServerURL = process.env.BASE_URL + ':' + process.env.AUTH_SERVER_PORT;
-const serviceURL = process.env.BASE_URL + ':' + process.env.SERVICE_PORT;
+const AUTH_SERVER_URL  = `${process.env.BASE_URL}:${process.env.AUTH_SERVER_PORT}`;
+const SERVICE_URL = `${process.env.BASE_URL}:${process.env.SERVICE_PORT}`;
+
 
 const loginCredentials = {
-  login: 'user@email.com',
-  password: '12345678',
+  login: process.env.USER_EMAIL,
+  password: process.env.USER_PASSWORD,
 };
 
 const getToken = async () => {
   try {
     console.log(new Date().toUTCString() + ' [Fetch token from Auth Server using credentials]');
-    const response = await fetch(`${authServerURL}/login`, {
+    const response = await fetch(`${AUTH_SERVER_URL }/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(loginCredentials),
@@ -35,7 +36,7 @@ const getToken = async () => {
 const getDataFromService = async (token) => {
   try {
     console.log(new Date().toUTCString() + ' [Fetch data from Service with the obtained token]');
-    const response = await fetch(serviceURL, {
+    const response = await fetch(SERVICE_URL, {
       method: 'GET',
       headers: { Authorization: token },
     });

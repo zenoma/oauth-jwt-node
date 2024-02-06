@@ -17,6 +17,8 @@ This is a simple OAuth example using Java Web Token
     npm install
     ```
 
+2. Create a `.env` file based on `.env.template` and fill in the necessary environment variables.
+
 ## Running the Authentication Server
 
 1. Run the authentication server:
