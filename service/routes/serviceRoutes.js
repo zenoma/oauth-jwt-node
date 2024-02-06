@@ -1,5 +1,5 @@
-const express = require('express');
-const jwtMiddleware = require('../../middleware/jwtMiddleware');
+import express from 'express';
+import {verifyJWT} from '../../middleware/jwtMiddleware.js'
 
 const router = express.Router();
 
@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     const token = req.headers.authorization;
 
     if (token) {
-      jwtMiddleware.verifyJWT(token, (err, decoded) => {
+      verifyJWT(token, (err, decoded) => {
         if (err) {
           console.log(new Date().toUTCString() + ' [Invalid token]')
           return res.status(401).json({ message: 'Invalid Token' });
@@ -22,4 +22,4 @@ router.get('/', (req, res) => {
     }
   });
 
-module.exports = router;
+export default router;

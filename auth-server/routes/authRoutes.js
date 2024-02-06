@@ -1,6 +1,6 @@
-const express = require('express');
-const jwtMiddleware = require('../../middleware/jwtMiddleware');
-const userValidationMiddleware = require('../../middleware/userValidationMiddleware');
+import express from 'express';
+import { validateUser } from '../../middleware/userValidationMiddleware.js';
+import { signJWT } from '../../middleware/jwtMiddleware.js';
 
 const router = express.Router();
 
@@ -8,10 +8,10 @@ router.post('/login', (req, res) => {
   const { login, password } = req.body;
 
   // Query the credentials in the DataBase
-  const user = userValidationMiddleware.validateUser(login, password);
+  const user = validateUser(login, password);
 
   if (user) {
-    const token = jwtMiddleware.signJWT({ login: user.login });
+    const token = signJWT({ login: user.login });
 
     console.log(new Date().toUTCString() + ' [Loggin succesfull for ' + login + ']');
     res.json({ token: token });
@@ -21,4 +21,4 @@ router.post('/login', (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

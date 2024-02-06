@@ -1,9 +1,10 @@
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv');
+import express from 'express';
+import dotenv from 'dotenv'
+
+import serviceRoutes from './routes/serviceRoutes.js';
+
 dotenv.config();
 
-const serviceRoutes = require('./routes/serviceRoutes');
 
 const app = express();
 app.use(express.json());

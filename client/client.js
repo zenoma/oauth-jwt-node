@@ -1,4 +1,5 @@
-const dotenv = require('dotenv');
+import dotenv from 'dotenv'
+
 dotenv.config();
 
 const authServerURL = process.env.BASE_URL + ':' + process.env.AUTH_SERVER_PORT;
