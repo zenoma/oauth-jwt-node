@@ -1,5 +1,7 @@
 import dotenv from 'dotenv'
+import DummyLogger from '../utils/simpleLogger.js';
 
+const logger = new DummyLogger();
 dotenv.config();
 
 const AUTH_SERVER_URL  = `${process.env.BASE_URL}:${process.env.AUTH_SERVER_PORT}`;
@@ -13,7 +15,7 @@ const loginCredentials = {
 
 const getToken = async () => {
   try {
-    console.log(new Date().toUTCString() + ' [Fetch token from Auth Server using credentials]');
+    logger.log(`Fetch token from Auth Server using credentials`);
     const response = await fetch(`${AUTH_SERVER_URL }/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -35,7 +37,7 @@ const getToken = async () => {
 
 const getDataFromService = async (token) => {
   try {
-    console.log(new Date().toUTCString() + ' [Fetch data from Service with the obtained token]');
+    logger.log(`Fetch data from Service with the obtained token`);
     const response = await fetch(SERVICE_URL, {
       method: 'GET',
       headers: { Authorization: token },
@@ -46,7 +48,7 @@ const getDataFromService = async (token) => {
     }
 
     const data = await response.json();
-    console.log(data);
+    console.log(data)
   } catch (error) {
     console.error(error.message);
   }

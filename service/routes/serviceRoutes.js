@@ -1,6 +1,8 @@
 import express from 'express';
 import {verifyJWT} from '../../middleware/jwtMiddleware.js'
+import DummyLogger from '../../utils/simpleLogger.js';
 
+const logger = new DummyLogger();
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -10,11 +12,11 @@ router.get('/', (req, res) => {
     if (token) {
       verifyJWT(token, (err, decoded) => {
         if (err) {
-          console.log(new Date().toUTCString() + ' [Invalid token]')
+          logger.log(`Invalid token`)
           return res.status(401).json({ message: 'Invalid Token' });
         }
   
-        console.log(new Date().toUTCString() + ' [Valid token usage for ' + decoded.login + ']')
+        logger.log(`Valid token usage for ${decoded.login}`)
         res.json({ message: "Data fetched", user: decoded.login });
       });
     } else {

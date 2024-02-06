@@ -1,7 +1,9 @@
 import express from 'express';
 import { validateUser } from '../../middleware/userValidationMiddleware.js';
 import { signJWT } from '../../middleware/jwtMiddleware.js';
+import DummyLogger from '../../utils/simpleLogger.js';
 
+const logger = new DummyLogger();
 const router = express.Router();
 
 router.post('/login', (req, res) => {
@@ -13,10 +15,10 @@ router.post('/login', (req, res) => {
   if (user) {
     const token = signJWT({ login: user.login });
 
-    console.log(new Date().toUTCString() + ' [Loggin succesfull for ' + login + ']');
+    logger.log(`Loggin succesfull for ${login}`);
     res.json({ token: token });
   } else {
-    console.log(new Date().toUTCString() + ' [Failed login attempt for ' + login + ']');
+    logger.log(`Failed login attempt for ${login}`);
     res.status(401).json({ message: 'Credentials are not valid' });
   }
 });

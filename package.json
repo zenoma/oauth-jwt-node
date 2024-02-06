@@ -13,9 +13,9 @@
     "ts-jest": "^29.1.2"
   },
   "scripts": {
-    "start:auth-server": "node ./auth-server/auth-server.js",
+    "start:auth-server": "node ./auth-server/authServer.js",
     "start:service": "node ./service/service.js",
-    "start:auth-server:watch": "node --watch ./auth-server/auth-server.js",
+    "start:auth-server:watch": "node --watch ./auth-server/authServer.js",
     "start:service:watch": "node --watch ./service/service.js",
     "client": "node ./client/client.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"

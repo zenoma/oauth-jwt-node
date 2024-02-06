@@ -1,6 +1,9 @@
 import express from 'express';
 import authRoutes from './routes/authRoutes.js';
 import dotenv from 'dotenv'
+import DummyLogger from '../utils/simpleLogger.js';
+
+const logger = new DummyLogger();
 
 dotenv.config();
 
@@ -13,5 +16,5 @@ app.use('/', authRoutes);
 
 
 app.listen(port, () => {
-  console.log(`AuthServer listening on port ${port}`);
+  logger.log(`AuthServer listening on port ${port}`);
 });
