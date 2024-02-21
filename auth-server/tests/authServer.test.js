@@ -1,8 +1,12 @@
+import { expect, test } from 'vitest'
+
 import dotenv from 'dotenv'
 
 dotenv.config();
 
-const authServerURL = process.env.BASE_URL + ':' + process.env.AUTH_SERVER_PORT;
+const authServerURL = `${import.meta.env.VITE_BASE_URL}:${import.meta.env.VITE_AUTH_SERVER_PORT}`;
+console.log(authServerURL)
+
 
 test('givenValidData_whenLogin_then200AndValidToken', async () => {
   const credentials = {
