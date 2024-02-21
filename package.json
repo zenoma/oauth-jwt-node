@@ -12,12 +12,15 @@
     "vitest": "^1.3.1"
   },
   "scripts": {
-    "start:auth-server": "node ./auth-server/authServer.js",
-    "start:service": "node ./service/service.js",
+    "start:auth-server": "node ./auth-server/authServer.js &",
+    "start:service": "node ./service/service.js &",
     "start:auth-server:watch": "node --watch ./auth-server/authServer.js",
     "start:service:watch": "node --watch ./service/service.js",
     "client": "node ./client/client.js",
-    "test": "vitest"
+    "test": "npm run start:service && npm run start:auth-server && vitest run && npm run kill:service && npm run kill:auth-server",
+    "kill:service": "pkill -f ./service/service.js",
+    "kill:auth-server": "pkill -f ./auth-server/authServer.js'"
+
   },
   "engines": {
     "node": ">=18.13.0"

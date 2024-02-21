@@ -24,7 +24,7 @@ This is a simple OAuth example using Java Web Token
 1. Run the authentication server:
 
     ```bash
-    node authServer.js
+    npm run start:auth-server:watch
     ```
 
     The authentication server should now be running on [http://localhost:8081](http://localhost:8081).
@@ -34,7 +34,7 @@ This is a simple OAuth example using Java Web Token
 1. Run the service:
 
     ```bash
-    node service.js
+    npm run start:service:watch
     ```
 
     The service server should now be running on [http://localhost:8080](http://localhost:8080).
@@ -44,7 +44,7 @@ This is a simple OAuth example using Java Web Token
 1. Run the client:
 
     ```bash
-    node client.js
+    npm run client
     ```
 
     The client will interact with the authentication server and service.
@@ -55,9 +55,5 @@ This is a simple OAuth example using Java Web Token
  1. Run the tests:
 
     ```bash
-    npm test
+    npm run test
     ```
-
-## Note
-
-- Be sure that authentication server and service are both running before starting the client or running the tests.
